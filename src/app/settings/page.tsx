@@ -5,7 +5,10 @@ import DefaultLayout from "@/components/Layouts/DefaultLayout";
 import TextField from "@mui/material/TextField";
 import React from "react";
 
-function node_card(product_name: any): any {
+function node_card(product_name: string): JSX.Element {
+  // Generate random carbon emission between 5 and 50
+  const randomEmission = Math.floor(Math.random() * 45 + 5);
+
   return (
     <div className="mb-5.5 flex flex-col gap-5.5 sm:flex-row">
       <div className="mb-4 flex items-center gap-3">
@@ -13,7 +16,6 @@ function node_card(product_name: any): any {
           <span className="mb-1.5 text-black dark:text-white">
             {product_name}
           </span>
-
           <span className="flex gap-2.5">
             <button className="text-sm hover:text-primary">Delete</button>
             <button className="text-sm hover:text-primary">Update</button>
@@ -23,15 +25,13 @@ function node_card(product_name: any): any {
       <span className="mb-1.5 text-black dark:text-white">
         <TextField
           label="carbon emission intensity"
-          defaultValue={12}
+          defaultValue={randomEmission}
           name="numberformat"
-          id="formatted-numberformat-input"
-          slotProps={{
-            input: {
-              // inputComponent: NumericFormatCustom as any,
-            },
-          }}
+          id={`emission-${product_name}`}
           variant="standard"
+          InputProps={{
+            endAdornment: "kgCO₂e/kg"
+          }}
         />
       </span>
     </div>
