@@ -38,10 +38,7 @@ function node_card(product_name: any): any {
   );
 }
 
-function schema_card(product_name: any): any {
-  function handleChange(value: any): any {
-    console.log("heyy", value)
-  }
+function schema_card(product_name: string, volume: number): JSX.Element {
   return (
     <div className="mb-5.5 flex flex-col gap-5.5 sm:flex-row">
       <div className="mb-4 flex items-center gap-3">
@@ -57,15 +54,10 @@ function schema_card(product_name: any): any {
       </div>
       <span className="flex mb-1.5 text-black dark:text-white">
         <TextField
-          label="carbon emission intensity"
-          defaultValue={12}
+          label="Volume Ordered Quarterly"
+          defaultValue={volume}
           name="numberformat"
           id="formatted-numberformat-input"
-          slotProps={{
-            input: {
-              // inputComponent: NumericFormatCustom as any,
-            },
-          }}
           variant="standard"
         />
       </span>
@@ -113,7 +105,7 @@ const Settings = () => {
                 <form action="#">
                   {products.map((product, index) => (
                     <React.Fragment key={index}>
-                      {schema_card(product.product_name)}
+                      {schema_card(product.product_name, product.volume_ordered_quarterly)}
                     </React.Fragment>
                   ))}
                   <div className="flex justify-end gap-4.5">
