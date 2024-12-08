@@ -68,7 +68,6 @@ const MyGraph: FC = () => {
           const x = centerX + radius * Math.cos(angle);
           const y = centerY + radius * Math.sin(angle);
           const size = row.carbon_emissions / 50000;
-
           // Add to graph visualization
           graph.addNode(row.product_name, {
             x,
